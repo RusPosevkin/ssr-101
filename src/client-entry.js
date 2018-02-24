@@ -1,8 +1,8 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { hydrate } from 'react-dom';
 import Hello from './Hello';
 
-render(
+hydrate(
   <Hello />,
   document.getElementById('root'),
 );
