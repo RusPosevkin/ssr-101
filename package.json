@@ -7,7 +7,7 @@
   "author": "Vitaly Kuznetsov",
   "scripts": {
     "build": "webpack",
-    "start": "babel-node src"
+    "start": "node src"
   },
   "dependencies": {
     "express": "^4.16.2",

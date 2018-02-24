@@ -1,16 +1,36 @@
 const path = require('path');
 
-module.exports = {
-  entry: './src/client-entry.js',
+const BUILD_PATH = path.join(__dirname, 'dist');
+
+const commonLoaders = [{
+  test: /\.js$/,
+  use: 'babel-loader',
+  include: path.join(__dirname, 'src'),
+}];
+
+const configClient = {
+  name: 'client',
+  entry: './src/entry-client.js',
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: BUILD_PATH,
     filename: 'client.js',
   },
   module: {
-    rules: [{
-      test: /\.jsx?$/,
-      use: 'babel-loader',
-      include: path.join(__dirname, 'src'),
-    }]
-  }
+    rules: commonLoaders
+  },
 };
+
+const configServer = {
+  name: 'server',
+  entry: './src/entry-server.js',
+  output: {
+    path: BUILD_PATH,
+    filename: 'server.js',
+    libraryTarget: 'commonjs2',
+  },
+  module: {
+    rules: commonLoaders
+  },
+};
+
+module.exports = [configClient, configServer];
