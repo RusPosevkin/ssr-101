@@ -22,6 +22,8 @@ const configClient = {
 
 const configServer = {
   name: 'server',
+  target: 'node',
+  externals: /^[^./]/,
   entry: './src/entry-server.js',
   output: {
     path: BUILD_PATH,
