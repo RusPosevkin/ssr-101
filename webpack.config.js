@@ -3,11 +3,10 @@ const path = require('path');
 
 const BUILD_PATH = path.join(__dirname, 'dist');
 
-const commonLoaders = [{
-  test: /\.js$/,
-  use: 'babel-loader',
-  include: path.join(__dirname, 'src'),
-}];
+const commonLoaders = [
+  { test: /\.js$/, use: 'babel-loader', include: path.join(__dirname, 'src') },
+  { test: /\.(jpg|svg)$/, loader: 'file-loader?name=images/[name].[hash:8].[ext]' },
+];
 
 const configClient = {
   name: 'client',
