@@ -16,7 +16,9 @@ const configClient = {
     filename: 'client.js',
   },
   module: {
-    rules: commonLoaders
+    rules: commonLoaders.concat([
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+    ]),
   },
 };
 
@@ -33,7 +35,9 @@ const configServer = {
     libraryTarget: 'commonjs2',
   },
   module: {
-    rules: commonLoaders
+    rules: commonLoaders.concat([
+      { test: /\.css$/, use: 'null-loader' },
+    ]),
   },
   resolve: {
     alias: {
