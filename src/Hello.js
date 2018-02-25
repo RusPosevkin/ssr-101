@@ -6,8 +6,23 @@ import cat640 from './images/cat_640_480.jpg';
 import hatAndMonocle from './images/hat_and_monocle.svg';
 
 export default class Hello extends Component {
+  constructor() {
+    super();
+    this.state = {
+      inputValue: '',
+      disableInputs: true
+    };
+
+    this.handleInput = this.handleInput.bind(this);
+  }
+
   componentDidMount() {
     picturefill();
+    this.setState({ disableInputs: false });
+  }
+
+  handleInput(event) {
+    this.setState({ inputValue: event.target.value });
   }
 
   render() {
@@ -23,6 +38,13 @@ export default class Hello extends Component {
           onClick={() => alert('Meow!')}
           className='Hello__hat-monocle'
         />
+        <form>
+          <input
+            value={this.state.inputValue}
+            onChange={this.handleInput}
+            disabled={this.state.disableInputs}
+          />
+        </form>
       </div>
     );
   }
