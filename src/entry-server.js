@@ -4,6 +4,7 @@ import Hello from './Hello';
 
 const template = (html) => `
   <!DOCTYPE html>
+  <link rel="stylesheet" href="styles.css" />
   <div id="root">${html}</div>
   <script src="client.js"></script>
 `;
