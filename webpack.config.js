@@ -1,3 +1,4 @@
+const nodeExternals = require('webpack-node-externals');
 const path = require('path');
 
 const BUILD_PATH = path.join(__dirname, 'dist');
@@ -23,7 +24,9 @@ const configClient = {
 const configServer = {
   name: 'server',
   target: 'node',
-  externals: /^[^./]/,
+  externals: [nodeExternals({
+    whitelist: ['picturefill'],
+  })],
   entry: './src/entry-server.js',
   output: {
     path: BUILD_PATH,
@@ -32,6 +35,11 @@ const configServer = {
   },
   module: {
     rules: commonLoaders
+  },
+  resolve: {
+    alias: {
+      picturefill$: 'lodash/noop',
+    },
   },
 };
 

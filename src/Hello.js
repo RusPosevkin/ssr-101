@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
+import picturefill from 'picturefill';
 
-const Hello = () => (
-  <div onClick={() => alert('Yeah!')}>
-    Hey Hello
-  </div>
-);
+export default class Hello extends Component {
+  componentDidMount() {
+    picturefill();
+  }
 
-export default Hello;
+  render() {
+    return (
+      <img
+        onClick={() => alert('Meow!')}
+        src='https://loremflickr.com/320/240?lock=12'
+        srcSet='https://loremflickr.com/640/480?lock=12 2x'
+        alt='Kitten'
+      />
+    );
+  }
+}
