@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import picturefill from 'picturefill';
-import './Hello.css';
 import cat320 from './images/cat_320_240.jpg';
 import cat640 from './images/cat_640_480.jpg';
 import hatAndMonocle from './images/hat_and_monocle.svg';
+import styled from 'styled-components';
+
+const StyledHatMonocle = styled.img`
+  src: url(${props => props.src});
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 340px;
+`;
 
 export default class Hello extends Component {
   constructor() {
@@ -33,10 +41,9 @@ export default class Hello extends Component {
           srcSet={`${cat640} 2x`}
           alt='Kitten'
         />
-        <img
+        <StyledHatMonocle
           src={hatAndMonocle}
           onClick={() => alert('Meow!')}
-          className='Hello__hat-monocle'
         />
         <form>
           <input
